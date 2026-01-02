@@ -1,0 +1,6 @@
+origin	https://github.com/Arianna-Cicero/Software-Solution-SAS-IPCA.git (fetch)
+origin	https://github.com/Arianna-Cicero/Software-Solution-SAS-IPCA.git (push)
+aecae88  Add generated project structure and placeholders
+daf5297d0957f7f4446e90fdcd4840226c55cd04	HEAD
+To https://github.com/Arianna-Cicero/Software-Solution-SAS-IPCA.git
+   daf5297..aecae88  main -> main
