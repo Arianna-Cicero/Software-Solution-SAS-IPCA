@@ -8,6 +8,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import com.example.lojasocial_app.domain.usecase.dashboard.GetDashboardOverviewUseCase
 
+
 class HomeViewModel(
     private val getDashboardOverviewUseCase: GetDashboardOverviewUseCase
 ) : ViewModel() {
@@ -39,6 +40,17 @@ class HomeViewModel(
                     )
                 }
             }
+        }
+    }
+    fun onLogoutClicked() {
+        _uiState.update {
+            it.copy(shouldLogout = true)
+        }
+    }
+
+    fun onLogoutHandled() {
+        _uiState.update {
+            it.copy(shouldLogout = false)
         }
     }
 }

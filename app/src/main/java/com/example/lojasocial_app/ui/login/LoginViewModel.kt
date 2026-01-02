@@ -9,9 +9,11 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import com.example.lojasocial_app.domain.usecase.auth.LoginUseCase
+import com.example.lojasocial_app.data.session.SessionManager
 
 class LoginViewModel(
-    private val loginUseCase: LoginUseCase
+    private val loginUseCase: LoginUseCase,
+    private val sessionManager: SessionManager
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(LoginUiState())
@@ -29,24 +31,22 @@ class LoginViewModel(
     fun login() {
         val state = _uiState.value
 
-        if (state.email.isBlank() || state.password.isBlank()) {
-            _uiState.update {
-                it.copy(error = "Preencha email e senha")
-            }
-            return
-        }
-
         viewModelScope.launch {
-            _uiState.update { it.copy(isLoading = true, error = null) }
+            _uiState.update { it.copy(isLoading = true) }
 
             try {
-                loginUseCase(
+                val session = loginUseCase(
                     email = state.email,
                     password = state.password
                 )
 
+                sessionManager.saveSession(session.id.toString())
+
                 _uiState.update {
-                    it.copy(isLoading = false, isLoggedIn = true)
+                    it.copy(
+                        isLoading = false,
+                        isLoggedIn = true
+                    )
                 }
 
             } catch (e: Exception) {

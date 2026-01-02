@@ -1,6 +1,9 @@
 package com.example.lojasocial_app.ui.inventory
 
-class InventoryScreen {
-    // TODO: Implement inventory UI
-}
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
 
+@Composable
+fun InventoryScreen() {
+    Text("Inventário")
+}
