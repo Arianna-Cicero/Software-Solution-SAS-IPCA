@@ -2,7 +2,12 @@ package com.example.lojasocial_app.core.navigation
 
 import android.os.Build
 import androidx.annotation.RequiresApi
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -29,7 +34,7 @@ fun NavGraph(
 ) {
     NavHost(
         navController = navController,
-        startDestination = Screen.Login.route
+        startDestination = startDestination
     ) {
 
         composable(Screen.Login.route) {
@@ -58,5 +63,28 @@ fun NavGraph(
         composable(Screen.Deliveries.route) {
             DeliveryListScreen()
         }
+
+        composable(Screen.Support.route) {
+            // TODO: Create Support screen
+            PlaceholderScreen("Apoios")
+        }
+
+        composable(Screen.Profile.route) {
+            // TODO: Create Profile screen
+            PlaceholderScreen("Perfil")
+        }
+    }
+}
+
+@Composable
+fun PlaceholderScreen(title: String) {
+    Box(
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
+    ) {
+        Text(
+            text = title,
+            style = MaterialTheme.typography.headlineMedium
+        )
     }
 }

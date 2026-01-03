@@ -2,6 +2,7 @@
 package com.example.lojasocial_app.core.navigation
 
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.ShoppingCart
@@ -17,7 +18,7 @@ sealed class Screen(
 
     object Home : Screen(
         route = "home",
-        label = "Home",
+        label = "Início",
         icon = Icons.Default.Home
     )
 
@@ -37,5 +38,17 @@ sealed class Screen(
         route = "deliveries",
         label = "Entregas",
         icon = Icons.Default.Send
+    )
+
+    object Support : Screen(
+        route = "support",
+        label = "Apoios",
+        icon = Icons.Default.DateRange
+    )
+
+    object Profile : Screen(
+        route = "profile",
+        label = "Perfil",
+        icon = Icons.Default.Person
     )
 }
